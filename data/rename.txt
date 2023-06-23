@@ -1,0 +1,8 @@
+報告書番号 ReportID
+発生年月日 Date_accident
+事故等種類 Type_accident
+事故等名 Title
+発生場所 Place
+報告書（PDF）公表 URL
+概要 Outline
+原因 Cause

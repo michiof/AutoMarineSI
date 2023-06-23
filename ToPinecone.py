@@ -11,7 +11,7 @@ pinecone_api_key = os.environ.get("PINECONE_API_KEY")
 pinecone_environment = os.environ.get("PINECONE_ENVIRONMENT")
 
 # Define input and output file names
-input_file_csv = './data/sample_emb.csv'
+input_file_csv = './data/accident-db_emb.csv'
 
 # Load data from the CSV file
 df = pd.read_csv(input_file_csv, encoding='utf-8')
@@ -32,6 +32,7 @@ if index_name not in pinecone.list_indexes():
 # Connecting to the index
 index = pinecone.Index(index_name)
 
+print("Start upsert to Pinecone database")
 
 # Upsert vectors into the index
 for i, row in df.iterrows():

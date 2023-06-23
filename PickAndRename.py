@@ -3,8 +3,8 @@ import pandas as pd
 from dotenv import load_dotenv
 
 # Define input and output file names
-input_file = './data/import202306002.csv'
-output_file_csv = './data/import_renamed.csv'
+input_file = 'JapanTransportSafetyBoard202306download.csv'
+output_file_csv = './data/accident-db.csv'
 
 # Specify the path to the file containing the new column names
 rename_file = './data/rename.txt'
