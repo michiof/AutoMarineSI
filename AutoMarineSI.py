@@ -11,18 +11,18 @@ import threading
 import time
 import sys
 
-# load environment variables from .env.local file
-load_dotenv('.env.local')  # replace with the path to your .env.local file if it's not in the same directory
+# Specify the output Language
+LANGUAGE = "Japanese"
 
-# models
+# Models
 EMBEDDING_MODEL = "text-embedding-ada-002"
 GPT_MODEL = "gpt-3.5-turbo"
 
 # Define the Pinecone index
 INDEX_NAME = "accident-db"
 
-# Define the output Language
-LANGUAGE = "Japanese"
+# Load environment variables from .env.local file
+load_dotenv('.env.local')  # replace with the path to your .env.local file if it's not in the same directory
 
 # Set up KEYS: this now gets the API key from the .env.local file
 openai.api_key = os.getenv("OPENAI_API_KEY")
