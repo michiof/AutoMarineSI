@@ -4,8 +4,6 @@ AutoMarineSI is a near-miss analyzer built upon the capabilities of OpenAI's GPT
 
 The system is designed to intelligently integrate information from a given near-miss report with historical accident data. From this, AutoMarineSI strives to generate scenarios of potential future accidents. Furthermore, it offers suggestions for safety countermeasures based on the analysed near-miss report.
 
-Though initially conceived with maritime navigation at its core, the methodology and adaptability of AutoMarineSI make it a beneficial tool across a range of industries. Beyond maritime, it holds potential for application in domains such as aviation and railways.
-
 
 ## **Pre-Setup**
 
@@ -33,21 +31,18 @@ Though initially conceived with maritime navigation at its core, the methodology
 
 ## Format and Definition of Accident Data
 
-Cal_embedding.py reads csv file with the following format:  
-`“ReportID”,  "Date_accident”,  "Type_accident”,  "Title”,  "Place”,  “URL”,  "Outline”,  "Cause”`  
+The "Cal_embedding.py" requires a CSV file with historical accident data. This file should include the following columns:
 
-Please also refer "sample_of_accident-db.csv" in data folder.
+    1. "ReportID": A unique ID for each accident
+    2. "Date_accident": The date of the accident
+    3. "Type_accident": The type of the accident
+    4. "Title": The title of the accident report or name of the accident
+    5. "Place": The location of the accident
+    6. "URL": The download URL for the accident report
+    7. "Outline": An outline of the accident
+    8. "Cause": The cause of the accident
 
-These are meaning of each columns:
-- ReportID: Unique ID for accident
-- Date_accident: Date of the accident
-- Type_accident: Type of the accident
-- Title: Title of the accident report or Name of the accident
-- Place: Place of the accident
-- URL: Download URL for the accident report
-- Outline: Outline of the accident
-- Cause: Cause of the accident
-
+Please refer to the "sample_of_accident-db.csv" file in the "data" folder for an example of the required format.
 
 
 ## Sample Data
@@ -56,7 +51,9 @@ These are meaning of each columns:
 
 If you don't have a past accident database, you can use the sample file "JTSB202306.csv" available in this repository. This file was downloaded from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** in June 2023. Please ensure to read the "Copyright of Sample Accident Data" below before using it.
 
-In the file, you'll find the headers are written in Japanese. You'll need to rename these headers and remove some columns from the original file. The script "PickAndRename.py" is designed to perform these necessary actions. Please execute this script after you have saved your OPENAI_API_KEY in your .env file. Once you've run the script, please proceed to step 1 of the Execution section: "Run Cal_embedding.py".
+In the file, you'll find the headers are written in Japanese. You'll need to rename these headers and remove some columns from the original file. 
+
+The script "PickAndRename.py" is designed to perform these necessary actions. Please execute this script after you have saved your OPENAI_API_KEY in your .env file. Once you've run the script, please proceed to step 1 of the Execution section: "Run Cal_embedding.py".
 
 
 ### Copyright
@@ -67,7 +64,8 @@ The sample file "JTSB202306.csv" in this repository was obtained from the **[Jap
 
 ## My messages
 
-- While my expertise lies in the Maritime industry, I do not possess the same proficiency in GitHub, Python, or other computer science domains. If you are a software engineer, I would greatly appreciate your assistance.
-- If you encounter any bugs or have suggestions to improve the system, I encourage you to make a pull request. All contributions are welcome.
-- At present, the system has been tested solely with maritime accident data written in Japanese, but there's an intent expand its capabilities across multiple industries and languages. The primary hurdle lies in sourcing well-formatted accident and incident reports in different languages. If you're engaged in the Maritime Shipping industry, aviation, or railways, regardless of whether you're in Japan or elsewhere in the world, your contribution to this project would be greatly appreciated. Your collaboration can significantly assist in the development of the system and help extend its linguistic capabilities.
 - I've written a post that provides an overview of AutoMarineSI. Please take a look if you have any: **[English](https://www.fmcho.com/posts/2023-06-25-2)** | **[日本語](https://www.fmcho.com/posts/2023-06-25-1)**
+- Although my expertise is in the Maritime industry, my proficiency in GitHub, Python, or other computer science domains is not as strong. If you are a software engineer, your assistance would be greatly appreciated.
+- If you encounter any bugs or have suggestions to improve the system, I encourage you to make a pull request. All contributions are welcome.
+- At present, the system has been tested solely with maritime accident data written in Japanese, but there's an intent expand its capabilities across multiple industries and languages. 
+- The primary hurdle lies in sourcing well-formatted accident and incident reports in different languages. If you're engaged in the Maritime Shipping industry, aviation, or railways, regardless of whether you're in Japan or elsewhere in the world, your contribution to this project would be greatly appreciated. Your collaboration can significantly assist in the development of the system and help extend its linguistic capabilities.
