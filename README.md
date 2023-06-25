@@ -29,11 +29,12 @@ Though initially conceived with maritime navigation at its core, the methodology
 
 [^1]:When attempting to upsert to the Pinecone database, you might occasionally encounter an error message from the Pinecone server, particularly just after creating a new Pinecone index. If this occurs, don't worry. Typically, simply retrying the script resolves the issue. The second or third attempt is usually successful.
 
+S
 
 ## Format and Definition of accident data
 
 Cal_embedding.py reads csv file with the following format:  
->“ReportID”,  "Date_accident”,  "Type_accident”,  "Title”,  "Place”,  “URL”,  "Outline”,  "Cause”    
+`“ReportID”,  "Date_accident”,  "Type_accident”,  "Title”,  "Place”,  “URL”,  "Outline”,  "Cause”`  
 
 Please also refer "sample_of_accident-db.csv" in data folder.
 
@@ -60,6 +61,7 @@ In the file, you'll find the headers are written in Japanese. You'll need to ren
 The sample file "JTSB202306.csv" in this repository was obtained from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/english.html)** in June 2023. You can find the terms of use at **[https://www.mlit.go.jp/jtsb/cyo.html](https://www.mlit.go.jp/jtsb/cyo.html)**. While you are permitted to use this data, you must explicitly state that it was sourced from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** whenever you use it. Additionally, if you modify the data, you must clearly indicate that edits have been made in addition to citing the original source.
 
 
+
 ## My messages
 
 - While my expertise lies in the Maritime industry, I do not possess the same proficiency in GitHub, Python, or other computer science domains. If you are a software engineer, I would greatly appreciate your assistance.
@@ -67,5 +69,6 @@ The sample file "JTSB202306.csv" in this repository was obtained from the **[Jap
 - At present, the system has been tested solely with maritime accident data written in Japanese, but there's an intent expand its capabilities across multiple industries and languages. The primary hurdle lies in sourcing well-formatted accident and incident reports in different languages. If you're engaged in the Maritime Shipping industry, aviation, or railways, regardless of whether you're in Japan or elsewhere in the world, your contribution to this project would be greatly appreciated. Your collaboration can significantly assist in the development of the system and help extend its linguistic capabilities.
 
 
-## A Brief Overview of the AutoMarineSI Structure and Development Background
+
+### A Brief Overview of the AutoMarineSI Structure and Development Background
 I've written a post that provides an overview of AutoMarineSI. Please take a look if you have any: **[English](https://www.fmcho.com/posts/2023-06-25-2)** | **[日本語](https://www.fmcho.com/posts/2023-06-25-1)**
