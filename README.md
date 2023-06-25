@@ -53,7 +53,7 @@ If you don't have a past accident database, you can use the sample file "JTSB202
 
 In the file, you'll find the headers are written in Japanese. You'll need to rename these headers and remove some columns from the original file. 
 
-The script "PickAndRename.py" is designed to perform these necessary actions. Please execute this script after you have saved your OPENAI_API_KEY in your .env file. Once you've run the script, please proceed to step 1 of the [Execution](https://github.com/michiof/AutoMarineSI#execution) section: "Run Cal_embedding.py".
+The script "PickAndRename.py" is designed to perform these necessary actions. Once you've run the script, please proceed to step 1 of the [Execution](https://github.com/michiof/AutoMarineSI#execution) section: "Run Cal_embedding.py".
 
 
 ### Copyright
