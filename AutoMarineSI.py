@@ -97,7 +97,6 @@ def query_message(
             break
         else:
             message += next_article
-    print(message)
 
     return message
 

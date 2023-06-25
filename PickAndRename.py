@@ -3,11 +3,11 @@ import pandas as pd
 from dotenv import load_dotenv
 
 # Define input and output file names
-input_file = 'JapanTransportSafetyBoard202306download.csv'
+input_file = 'JTSB202306.csv'
 output_file_csv = './data/accident-db.csv'
 
 # Specify the path to the file containing the new column names
-rename_file = './data/rename.txt'
+rename_file = 'rename.txt'
 
 # Load the .env.local file
 load_dotenv('.env.local')

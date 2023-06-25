@@ -6,8 +6,8 @@ import time
 from dotenv import load_dotenv
 
 # Define input and output file names
-input_file = './data/import_renamed.csv'
-output_file_csv = './data/sample_data.csv'
+input_file = './data/accident-db.csv'
+output_file_csv = './data/accident-db_emb.csv'
 
 # Load the .env.local file
 load_dotenv('.env.local')
@@ -63,5 +63,6 @@ for batch_num in range(num_batches):
     if batch_num != num_batches - 1:  # No need to sleep after last batch
         print("Sleeping for 60 seconds to avoid API rate limit...")
         time.sleep(60)
+        print("Start embeddings calculation....")
 
 print("Completed embeddings calculation for all batches and saved to csv file.")

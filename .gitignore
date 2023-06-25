@@ -160,9 +160,9 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Data directory (ignore all except for sample_data.csv)
+# Data directory (ignore all except for sample_of_accident-db.csv)
 data/*
-!data/rename.txt
+!data/sample_of_accident-db.csv
 
 # OS generated files
 .DS_Store
@@ -177,6 +177,3 @@ data/*
 *.swp
 *.swo
 *.swn
-
-# Log files
-*.log
