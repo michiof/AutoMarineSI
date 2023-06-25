@@ -1,11 +1,11 @@
-# **AutoMarineSI** : A Near-Miss Analyzer using GPT 3 & 4
+# AutoMarineSI : A Near-Miss Analyzer using GPT 3 & 4
 
 AutoMarineSI is a near-miss analyzer built upon the capabilities of OpenAI's GPT-3 and GPT-4 models.
 
 The system is designed to intelligently integrate information from a given near-miss report with historical accident data. From this, AutoMarineSI strives to generate scenarios of potential future accidents. Furthermore, it offers suggestions for safety countermeasures based on the analysed near-miss report.
 
 
-## **Pre-Setup**
+## Pre-Setup
 
 1. Install the required packages.
 2. Create a .env file and specify your own keys and Pinecone environment. The format should be:  
@@ -18,7 +18,7 @@ The system is designed to intelligently integrate information from a given near-
 6. Save your accident database in CSV format in the data directory. For the correct format and definitions of the accident data, refer to the sections below: ["Format and Definition of Accident Data"](https://github.com/michiof/AutoMarineSI#format-and-definition-of-accident-data) and ["Sample Data"](https://github.com/michiof/AutoMarineSI#sample-data).
 
 
-## **Execution**
+## Execution
 
 1. Run "Cal_embedding.py" to add embedding values to your CSV file. (This is required only the first time.)
 2. Run "ToPinecone.py" to import the accident database into Pinecone[^1]. (This is also only required the first time.)
