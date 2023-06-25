@@ -31,7 +31,7 @@ Though initially conceived with maritime navigation at its core, the methodology
 
 
 
-## Format and Definition of accident data
+## Format and Definition of Accident Data
 
 Cal_embedding.py reads csv file with the following format:  
 `“ReportID”,  "Date_accident”,  "Type_accident”,  "Title”,  "Place”,  “URL”,  "Outline”,  "Cause”`  
@@ -52,14 +52,14 @@ These are meaning of each columns:
 
 ## Sample Data
 
-### How to Use Sample Accident Data
+### How to Use
 
 If you don't have a past accident database, you can use the sample file "JTSB202306.csv" available in this repository. This file was downloaded from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** in June 2023. Please ensure to read the "Copyright of Sample Accident Data" below before using it.
 
 In the file, you'll find the headers are written in Japanese. You'll need to rename these headers and remove some columns from the original file. The script "PickAndRename.py" is designed to perform these necessary actions. Please execute this script after you have saved your OPENAI_API_KEY in your .env file. Once you've run the script, please proceed to step 1 of the Execution section: "Run Cal_embedding.py".
 
 
-### Copyright of Sample Accident Data
+### Copyright
 
 The sample file "JTSB202306.csv" in this repository was obtained from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/english.html)** in June 2023. You can find the terms of use at **[https://www.mlit.go.jp/jtsb/cyo.html](https://www.mlit.go.jp/jtsb/cyo.html)**. While you are permitted to use this data, you must explicitly state that it was sourced from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** whenever you use it. Additionally, if you modify the data, you must clearly indicate that edits have been made in addition to citing the original source.
 
