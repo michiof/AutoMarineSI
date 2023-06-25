@@ -15,7 +15,7 @@ The system is designed to intelligently integrate information from a given near-
 3. Specify the output language in AutoMarinSI.py. The default is set to "Japanese".
 4. Specify the OpenAI model in AutoMarinSI.py. The default models are “gpt3.5-turbo” and “text-embedding-ada-002”.
 5. Specify the OpenAI model in AddEmbedding.py. The default model is “text-embedding-ada-002”.
-6. Save your accident database (in CSV format) in “data” directory. Refer to the "Format of accident data" section below about the format.
+6. Save your accident database in CSV format in the data directory. For the correct format and definitions of the accident data, refer to the sections below: ["Format and Definition of Accident Data"](https://github.com/michiof/AutoMarineSI#format-and-definition-of-accident-data) and ["Sample Data"](https://github.com/michiof/AutoMarineSI#sample-data).
 
 
 ## **Execution**
