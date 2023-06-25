@@ -12,9 +12,9 @@ The system is designed to intelligently integrate information from a given near-
 `OPENAI_API_KEY=...`  
 `PINECONE_API_KEY=...`  
 `PINECONE_ENVIRONMENT=...`  
-3. Specify the output language in AutoMarinSI.py. The default is set to "Japanese".
-4. Specify the OpenAI model in AutoMarinSI.py. The default models are “gpt3.5-turbo” and “text-embedding-ada-002”.
-5. Specify the OpenAI model in AddEmbedding.py. The default model is “text-embedding-ada-002”.
+3. Specify the output language in "AutoMarinSI.py". The default is set to "Japanese".
+4. Specify the OpenAI model in "AutoMarinSI.py". The default models are “gpt3.5-turbo” and “text-embedding-ada-002”.
+5. Specify the OpenAI model in "AddEmbedding.py". The default model is “text-embedding-ada-002”.
 6. Save your accident database in CSV format in the data directory. For the correct format and definitions of the accident data, refer to the sections below: ["Format and Definition of Accident Data"](https://github.com/michiof/AutoMarineSI#format-and-definition-of-accident-data) and ["Sample Data"](https://github.com/michiof/AutoMarineSI#sample-data).
 
 
