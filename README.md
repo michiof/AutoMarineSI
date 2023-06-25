@@ -29,7 +29,7 @@ Though initially conceived with maritime navigation at its core, the methodology
 
 [^1]:When attempting to upsert to the Pinecone database, you might occasionally encounter an error message from the Pinecone server, particularly just after creating a new Pinecone index. If this occurs, don't worry. Typically, simply retrying the script resolves the issue. The second or third attempt is usually successful.
 
-S
+
 
 ## Format and Definition of accident data
 
@@ -49,14 +49,17 @@ These are meaning of each columns:
 - Cause: Cause of the accident
 
 
-## How to Use Sample Accident Data
+
+## Sample Data
+
+### How to Use Sample Accident Data
 
 If you don't have a past accident database, you can use the sample file "JTSB202306.csv" available in this repository. This file was downloaded from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** in June 2023. Please ensure to read the "Copyright of Sample Accident Data" below before using it.
 
 In the file, you'll find the headers are written in Japanese. You'll need to rename these headers and remove some columns from the original file. The script "PickAndRename.py" is designed to perform these necessary actions. Please execute this script after you have saved your OPENAI_API_KEY in your .env file. Once you've run the script, please proceed to step 1 of the Execution section: "Run Cal_embedding.py".
 
 
-## Copyright of Sample Accident Data
+### Copyright of Sample Accident Data
 
 The sample file "JTSB202306.csv" in this repository was obtained from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/english.html)** in June 2023. You can find the terms of use at **[https://www.mlit.go.jp/jtsb/cyo.html](https://www.mlit.go.jp/jtsb/cyo.html)**. While you are permitted to use this data, you must explicitly state that it was sourced from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** whenever you use it. Additionally, if you modify the data, you must clearly indicate that edits have been made in addition to citing the original source.
 
@@ -67,8 +70,4 @@ The sample file "JTSB202306.csv" in this repository was obtained from the **[Jap
 - While my expertise lies in the Maritime industry, I do not possess the same proficiency in GitHub, Python, or other computer science domains. If you are a software engineer, I would greatly appreciate your assistance.
 - If you encounter any bugs or have suggestions to improve the system, I encourage you to make a pull request. All contributions are welcome.
 - At present, the system has been tested solely with maritime accident data written in Japanese, but there's an intent expand its capabilities across multiple industries and languages. The primary hurdle lies in sourcing well-formatted accident and incident reports in different languages. If you're engaged in the Maritime Shipping industry, aviation, or railways, regardless of whether you're in Japan or elsewhere in the world, your contribution to this project would be greatly appreciated. Your collaboration can significantly assist in the development of the system and help extend its linguistic capabilities.
-
-
-
-### A Brief Overview of the AutoMarineSI Structure and Development Background
-I've written a post that provides an overview of AutoMarineSI. Please take a look if you have any: **[English](https://www.fmcho.com/posts/2023-06-25-2)** | **[日本語](https://www.fmcho.com/posts/2023-06-25-1)**
+- I've written a post that provides an overview of AutoMarineSI. Please take a look if you have any: **[English](https://www.fmcho.com/posts/2023-06-25-2)** | **[日本語](https://www.fmcho.com/posts/2023-06-25-1)**
