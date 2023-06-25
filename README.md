@@ -49,7 +49,7 @@ Please refer to the "sample_of_accident-db.csv" file in the "data" folder for an
 
 ### How to Use
 
-If you don't have a past accident database, you can use the sample file "JTSB202306.csv" available in this repository. This file was downloaded from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** in June 2023. Please ensure to read the "Copyright of Sample Accident Data" below before using it.
+If you don't have a past accident database, you can use the sample file "JTSB202306.csv" available in this repository. This file was downloaded from the **[Japan Transport Safety Board](https://www.mlit.go.jp/jtsb/index.html)** in June 2023. Please ensure to read the ["Copyright"](https://github.com/michiof/AutoMarineSI#copyright) below before using it.
 
 In the file, you'll find the headers are written in Japanese. You'll need to rename these headers and remove some columns from the original file. 
 
