@@ -1,8 +1,8 @@
 # AutoMarineSI : A Near-Miss Analyzer using GPT 3 & 4
 
-AutoMarineSI is a near-miss analyzer built upon the capabilities of OpenAI's GPT-3 and GPT-4 models.
+AutoMarineSI is a Python script that utilizes OpenAI's GPT3/4 to infer possible future accidents from inputted near-miss reports.
 
-The system is designed to intelligently integrate information from a given near-miss report with historical accident data. From this, AutoMarineSI strives to generate scenarios of potential future accidents. Furthermore, it offers suggestions for safety countermeasures based on the analysed near-miss report.
+The script identifies similar past accident cases based on the content of a user-inputted near-miss report and, by leveraging GPT3/4, uses these cases to predict possible accidents. It then outputs these potential accidents along with corresponding safety measures.
 
 
 ## Pre-Setup
