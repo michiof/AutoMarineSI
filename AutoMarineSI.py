@@ -5,6 +5,7 @@ import pandas as pd  # for storing text and embeddings data
 import tiktoken  # for counting tokens
 from scipy import spatial  # for calculating vector similarities for search
 from dotenv import load_dotenv  # import the load_dotenv function
+import json
 
 # To show a "...waiting..." message while waiting for a response from the API
 import threading
@@ -14,15 +15,21 @@ import sys
 # Specify the output Language
 LANGUAGE = "Japanese"
 
-# Models
-EMBEDDING_MODEL = "text-embedding-ada-002"
-GPT_MODEL = "gpt-3.5-turbo"
+# Define the file path to config.json file
+CONFIG_FILE_PATH = 'config.json'
 
 # Define the Pinecone index
 INDEX_NAME = "accident-db"
 
-# Load environment variables from .env.local file
-load_dotenv('.env.local')  # replace with the path to your .env.local file if it's not in the same directory
+# replace with the path to your .env.local file if it's not in the same directory
+load_dotenv('.env.local')
+
+# Models
+EMBEDDING_MODEL = "text-embedding-ada-002"
+GPT_MODEL = "gpt-3.5-turbo"
+
+# Token Limit
+LIMIT = 4096
 
 # Set up KEYS: this now gets the API key from the .env.local file
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -44,7 +51,7 @@ def print_waiting_message(stop_event):
 # search function using Pinecone
 def strings_ranked_by_relatedness(
     query: str,
-    top_n: int = 50
+    top_n: int = 100
 ) -> object:
     """Returns a list of strings and relatednesses, sorted from most related to least."""
     query_embedding_response = openai.Embedding.create(
@@ -63,6 +70,12 @@ def num_tokens(text: str, model: str = GPT_MODEL) -> int:
     return len(encoding.encode(text))
 
 
+def load_from_config(file_path, key):
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    return data[key]
+
+
 def query_message(
     query: str,
     model: str,
@@ -71,14 +84,9 @@ def query_message(
     """Return a message for GPT, with relevant source texts pulled from a dataframe."""
     results = strings_ranked_by_relatedness(query)
 
-    introduction = '''
-    Create a potential accident that could occur in the future based on the given nearmiss report. 
-    The procedure is as follows:
-    First, sumarize inputed past accidents. If it was not possible, respond with "I cannot advise you...".
-    Start with "Foreseeable accident summary: " Then, output the samarized sentences as you determine the accident you foresee based on past accident cases.
-    The output should be wrote with 1000 characters.
-    Next, produce its safety countermeasures. Start with "Safety measures: "
-    '''
+    introduction = load_from_config(CONFIG_FILE_PATH, 'introduction')
+
+    LANGUAGE = load_from_config(CONFIG_FILE_PATH, 'language')
 
     language = f"\nWrite all your output in {LANGUAGE}"
 
@@ -103,15 +111,19 @@ def query_message(
 def ask(
     query: str,
     model: str = GPT_MODEL,
-    token_budget: int = 4096 - 500,
+    token_budget: int = LIMIT - 500,
     print_message: bool = False,
 ) -> str:
     """Answers a query using GPT and a dataframe of relevant texts and embeddings."""
     message = query_message(query, model=model, token_budget=token_budget)
+
     if print_message:
         print(message)
+    
+    system_message = load_from_config(CONFIG_FILE_PATH, 'system')
+
     messages = [
-        {"role": "system", "content": "You are an exceptional Captain, with extensive experience at sea. You possess the ability to foresee accidents that may potentially occur in the future."},
+        {"role": "system", "content": system_message},
         {"role": "user", "content": message},
     ]
 
@@ -145,14 +157,15 @@ print("\n")
 print(ask(message))
 
 # Get related strings
-results = strings_ranked_by_relatedness(message, top_n=5)
+#results = strings_ranked_by_relatedness(message, top_n=5)
 
 # Initialize a counter for print results
-counter = 1
+#counter = 1
 
-print("\n\nThese are refereced data:")
+#print("\n\nThese are refereced data:")
 
 # Print the results
+"""
 for match in results["matches"]:
     print("\n")
     print("Referenced Data " + str(counter))
@@ -162,3 +175,4 @@ for match in results["matches"]:
 #    print(match["metadata"]["Outline"].replace(" ", ""))
     print("URL: " + match["metadata"]["URL"])
     counter += 1
+"""
