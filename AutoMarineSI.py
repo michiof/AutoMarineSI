@@ -6,14 +6,13 @@ import tiktoken  # for counting tokens
 from scipy import spatial  # for calculating vector similarities for search
 from dotenv import load_dotenv  # import the load_dotenv function
 import json
+from datetime import datetime
 
 # To show a "...waiting..." message while waiting for a response from the API
 import threading
 import time
 import sys
 
-# Specify the output Language
-LANGUAGE = "Japanese"
 
 # Define the file path to config.json file
 CONFIG_FILE_PATH = 'config.json'
@@ -30,6 +29,9 @@ GPT_MODEL = "gpt-3.5-turbo"
 
 # Token Limit
 LIMIT = 4096
+
+# Record output results in log file (Yes=1, No=0)
+log_function = 1
 
 # Set up KEYS: this now gets the API key from the .env.local file
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -61,8 +63,8 @@ def strings_ranked_by_relatedness(
     query_embedding = query_embedding_response["data"][0]["embedding"]
 
     results = index.query(query_embedding, top_k=top_n, include_metadata=True)
+    
     return results
-
 
 def num_tokens(text: str, model: str = GPT_MODEL) -> int:
     """Return the number of tokens in a string."""
@@ -85,11 +87,9 @@ def query_message(
     results = strings_ranked_by_relatedness(query)
 
     introduction = load_from_config(CONFIG_FILE_PATH, 'introduction')
-
     LANGUAGE = load_from_config(CONFIG_FILE_PATH, 'language')
 
     language = f"\nWrite all your output in {LANGUAGE}"
-
     question = f"\n\nNearmiss report: {query}"
 
     message = introduction + language + question
@@ -97,7 +97,8 @@ def query_message(
         title = match["metadata"]["Title"]
         outline = match["metadata"]["Outline"]
         cause = match["metadata"]["Cause"]
-        next_article = f'\n\n\nPast accident {i}:\n\n\nTitle:\n{title}\n\n\nOutline:\n{outline}\n\n\nCause:\n{cause}\n\n\n'
+        url = match["metadata"]["URL"]
+        next_article = f'\n\n\nPast accident {i}:\n\n\nTitle:\n{title}\n\n\nOutline:\n{outline}\n\n\nCause:\n{cause}\n\n\nURL:\n{url}\n\n\n'
         if (
             num_tokens(message + next_article + question, model=model)
             > token_budget
@@ -116,9 +117,6 @@ def ask(
 ) -> str:
     """Answers a query using GPT and a dataframe of relevant texts and embeddings."""
     message = query_message(query, model=model, token_budget=token_budget)
-
-    if print_message:
-        print(message)
     
     system_message = load_from_config(CONFIG_FILE_PATH, 'system')
 
@@ -145,6 +143,22 @@ def ask(
     print("\n")
 
     response_message = response["choices"][0]["message"]["content"]
+
+    # log the results to a JSON file
+    if log_function == 1:
+
+        final_token_count = num_tokens(message, model=model)
+
+        with open('./data/gpt_logs.json', 'a') as f:
+            log_entry = {
+                'timestamp': datetime.now().isoformat(),
+                'token': final_token_count,
+                'results': response_message,
+                'prompt': message
+            }
+            json.dump(log_entry, f, ensure_ascii=False)
+            f.write('\n')
+
     return response_message
 
 
@@ -152,7 +166,8 @@ def ask(
 print("\n")
 print("Start AutoMarineSI...")
 print("\n")
-message = input("Please input your near-miss report: ")
+#message = input("Please input your near-miss report: ")
+message = "潮流が強く舵が効かない"
 print("\n")
 print(ask(message))
 
